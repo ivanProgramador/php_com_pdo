@@ -1,0 +1,74 @@
+
+
+<?php
+
+ 
+
+   $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
+   $usuario = 'root';
+   $senha = '';
+
+ 
+
+    try{
+
+    	 $conexao = new PDO($dsn,$usuario,$senha);
+
+    	 $query ="
+             select * from tb_usuarios;
+    	 ";
+
+    	 // executando um metodo de consulta 
+ 	   
+
+    	// em caso de consulta para listar os dados contidos na tabela 
+    	// e necessario chamar o metodo fetch all que perentnce ao objeto stmt
+    	// o metodo fetch all retorna um array para cada registro contido no banco de dados
+    	// mas o fatch all pode retornar o resultad de algumas formas
+
+    	// se eu que quiser retorno em array com indices associativos
+
+    	//  $lista = $stmt-> fetchAll(PDO::FETCH_ASSOC);
+
+    	// se eu que quiser retorno em arrays com indices numericos
+
+    	//  $lista = $stmt-> fetchAll(PDO::FETCH_NUM);
+
+    	//  se eu que quiser retorno em objetos um objeto pra cada registro
+
+    	//  $lista = $stmt-> fetchAll(PDO::FETCH_OBJ);
+
+    	// MAS ATENÇÃO CADA MODO DESSES TEM SEU METODO DE ACESSO PARA RECUPERAR ATRIBUTOS 
+    	// array numerico -> fazer a busca pelo indice numerico
+    	// array associativo -> fazer a abusca pelo indice associativo
+    	// objeto -> fazer a busca pelos atributos.
+
+
+
+
+
+
+
+    	  $stmt = $conexao -> query($query);
+    	  $lista = $stmt-> fetchAll(PDO::FETCH_OBJ);
+
+    	    echo "<pre>";
+    	    print_r($lista);
+    	    echo "</pre>";
+
+    	// Pelo fato do fetch all retornar um array e possivel manipular a exibição usando como refrencia os indices presentes no retorno
+
+    	
+
+
+    }catch(PDOException $e){
+      
+
+
+       echo "Erro: ".$e -> getCode()."mensagem: ".$e->getMessage();
+
+
+    }
+
+
+?>

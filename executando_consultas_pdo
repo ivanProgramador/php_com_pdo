@@ -1,0 +1,63 @@
+
+
+<?php
+
+ 
+
+   $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
+   $usuario = 'root';
+   $senha = '';
+
+ 
+
+    try{
+
+    	 $conexao = new PDO($dsn,$usuario,$senha);
+
+    	 $query ="
+             select * from tb_usuarios;
+    	 ";
+
+    	 // executando um metodo de consulta 
+ 	   
+
+    	// em caso de consulta para listar os dados contidos na tabela 
+    	// e necessario chamar o metodo fetch all que perentnce ao objeto stmt
+    	// o metodo fetch all retorna um array para cada registro contido no banco de dados
+
+
+    	  $stmt = $conexao -> query($query);
+    	    $lista = $stmt-> fetchAll();
+
+    	    echo "<pre>";
+    	    print_r($lista);
+    	    echo "</pre>";
+
+    	// Pelo fato do fetch all retornar um array e possivel manipular a exibição usando como refrencia os indices presentes no retorno
+
+    	echo "<hr><br> Retonando os nomse dos um usuarios<br><hr>";
+    	echo $lista[0]['nome'];
+    	echo "<br>";
+    	echo $lista[1]['nome'];
+    	echo "<hr><br> Retonando os emails dos  usuarios<br><hr>";
+    	echo $lista[0]['email'];
+    	echo "<br>";
+    	echo $lista[1]['email'];
+
+
+
+
+
+
+
+    }catch(PDOException $e){
+      
+
+
+       echo "Erro: ".$e -> getCode()."mensagem: ".$e->getMessage();
+
+
+    }
+
+
+?>
