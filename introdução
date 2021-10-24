@@ -1,0 +1,15 @@
+PDO
+trata-se de uma interface chamada php data object que exite para facilitar o uso de bancos de dados em php
+em casos onde e necessaria a torca de um banco de dados de um aplicação muitas vezes e necessariao que todos os pontos do codigo que se referem ao banco de dados atual sejam refeitas levando bastante tempo para a conclusão.
+usado a interface pdo basta ativar os driver do banco correpondente ou baixar e incluir a bibioteca que tornam o banco de dados compativel.
+
+banco de dados / drivers
+
+ORACLE / pdo_oci
+MYSQL  / pdo_mysql
+POSTGREE SQL / pdo_pgsql
+MICROSOFT SQL SERVER / pdo_odbc / lib -> A interface pdo não tem o driver do microsoft sql server nativo então e necessario fazer o dowload da bibliteca no site da empresa.
+ 
+
+fora isso a interface pdo tambem conta com recursos de proteção em casos de ataques com sql injection bem comun em aplicaçoes web.
+
